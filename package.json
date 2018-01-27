@@ -1,0 +1,14 @@
+{
+  "name": "prisoner-app",
+  "version": "1.0.0",
+  "description": "A prisoner app that shows prisoners currently in the prison aswell as allowing you to add new ones in.",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "author": "Rob Tuppen",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^1.7.11"
+  }
+}
