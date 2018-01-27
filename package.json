@@ -8,7 +8,10 @@
   },
   "author": "Rob Tuppen",
   "license": "ISC",
+  "dependencies": {
+    "electron": "^1.8.1"
+  },
   "devDependencies": {
-    "electron": "^1.7.11"
+    "electron-packager": "^10.1.1"
   }
 }
