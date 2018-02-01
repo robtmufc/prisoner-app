@@ -3,47 +3,48 @@
 <head>
     <title>Prisoner App</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
-<body>
-    <nav>
-        <div class="nav-wrapper">
-            <a class="brand-logo center">Prisoner App</a>
+    <body>
+        <nav>
+            <div class="nav-wrapper">
+                <a class="brand-logo center ">Sunshine States Prison</a>
+            </div>
+        </nav>
+        <div class="row">
+            <div class="col s12">
+                <h1 class="center-align"></h1>
+            </div>
         </div>
-    </nav>
-    <div class="row">
-        <label for="name">Name:</label>
-            <input type ="text" id="name" readonly/>
-    </div>
+        <div class="row">
+            <div class="col s6">
+                <label for="age">Age:</label>
+                <input type="text" id="age" readonly/>
+            </div>
+            <div class="col s6">
+                <label for="address">Address:</label>
+                <input type="text" id="address" readonly/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s6">
+                <label for="category">Category:</label>
+                <input type="text" id="category" readonly/>
+            </div>
+            <div class="col s6">
+                <label for="charge">Charge:</label>
+                <input type="text" id="charge" readonly/>
+            </div>
             <div class="row">
-                <div class ="col s6">
-                        <label for="age">Age:</label>
-                        <input type ="text" id="age" readonly/>
+                <div class="col s12"></div>
+            </div>
+            <div class="row">
+                <div class="col s1 offset-s4">
+                    <Button class='btn wave-effect waves-light' type="button" id="back-button"><</Button>
                 </div>
-                <div class ="col s6">
-            <label for="address">Address:</label>
-            <input type ="text" id="address" readonly/>
+                <div class="col s1 offset-s1">
+                    <Button class='btn wave-effect waves-light' type="button" id="forward-button">></Button>
+                </div>
+            </div>
         </div>
-        </div>
-        <div class="row">
-                <div class ="col s6">
-            <label for="category">Category:</label>
-            <input type ="text" id="category" readonly/>
-        </div>
-        <div class ="col s6">
-            <label for="charge">Charge:</label>
-            <input type ="text" id="charge" readonly/>
-        </div>
-        <div class="row">
-                <div class ="col s12"></div>
-        </div>
-        <div class="row">
-                <div class ="col s1 offset-s4">
-            <Button class='btn wave-effect waves-light' type="button" id="back-button"><</Button>
-        </div>
-        <div class ="col s1 offset-s1">
-            <Button class='btn wave-effect waves-light' type="button" id="forward-button">></Button>
-        </div>
-        </div>
-        </div>
-    <script src="scripts/mainWindowScripts.js"></script>
-</body>
+        <script src="scripts/mainWindowScripts.js"></script>
+    </body>
 </html>

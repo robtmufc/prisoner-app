@@ -1,7 +1,7 @@
 var name, age, address, category, charge;
 
 module.exports = class Prisoner {
-    constructor(name, age, address, category, charge){
+    constructor(name, age, address, category, charge) {
         this.name = name;
         this.age = age;
         this.address = address;
@@ -15,16 +15,16 @@ module.exports = class Prisoner {
     getAge() {
         return this.age;
     }
-    getAddress(){
+    getAddress() {
         return this.address;
     }
-    getCategory(){
+    getCategory() {
         return this.category;
     }
-    getCharge(){
+    getCharge() {
         return this.charge;
     }
-    printString(){
-        return "Name:"+ this.name+" Age:"+this.age+" Address:"+this.address+" Category:"+this.category+" Charge:"+this.charge;
+    printString() {
+        return "Name:" + this.name + " Age:" + this.age + " Address:" + this.address + " Category:" + this.category + " Charge:" + this.charge;
     }
 };
