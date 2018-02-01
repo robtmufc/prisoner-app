@@ -8,25 +8,20 @@
     <div class='container'></div>
     <form>
         <div>
-            <label>Enter Item</label>
-            <input type ="text" id="item" autofocus>
+            <label for="name">Enter Name</label>
+            <input type ="text" id="name"/>
+            <label for="age">Enter Age</label>
+            <input type ="text" id="age"/>
+            <label for="address">Enter Address</label>
+            <input type ="text" id="address"/>
+            <label for="category">Enter Category</label>
+            <input type ="text" id="category"/>
+            <label for="charge">Enter Charge</label>
+            <input type ="text" id="charge"/>
         </div>
-        <button class='btn wave-effect waves-light' type="submit">add Item</button>
+        <button class='btn wave-effect waves-light' type="submit">Add Prisoner</button>
     </form>
-    </div>  
-
-    <script>
-        // const electron = require('electron');
-        // const {ipcRenderer} = electron;
-
-        // const form = document.querySelector('form');
-        // form.addEventListener('submit', submitForm);
-
-        // function submitForm(e){
-        //     e.preventDefault();
-        //     const item = document.querySelector('#item').value;
-        //     ipcRenderer.send('item:add', item); // send to main.js
-        // }
-    </script>
+    </div> 
+    <script src="scripts/addWindowScripts.js"></script>
 </body>
 </html>

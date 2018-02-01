@@ -3,79 +3,47 @@
 <head>
     <title>Prisoner App</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
-</head>
 <body>
     <nav>
         <div class="nav-wrapper">
-            <a class="brand-logo center">Shopping List</a>
+            <a class="brand-logo center">Prisoner App</a>
         </div>
     </nav>
-    
-    <ul></ul>
-
-    <script>
-        // const electron = require('electron');
-        // const {ipcRenderer} = electron;
-        // const ul = document.querySelector('ul');
-        
-
-        // // catch add item
-        // ipcRenderer.on('item:add', function(e, item){
-        //     ul.className = 'collection';
-        //     const li = document.createElement('li');
-        //     li.className = 'collection-item';
-        //     const itemText = document.createTextNode(item);
-        //     li.appendChild(itemText);
-        //     ul.appendChild(li);
-        // });
-
-        // // clear items
-        // ipcRenderer.on('item:clear', function(){
-        //     ul.innerHTML = '';
-        //     ul.className = '';
-        // });
-        // // save items to static file
-        // ipcRenderer.on('item:save', function(e, item){
-        //     let output = '';
-        // var items = ul.getElementsByTagName("li");
-        // console.log("items length: "+ items.length);
-        // for (var i = 0; i < items.length; ++i) {
-        //     console.log("i: "+ i);
-        // // do something with items[i], which is a <li> element
-        //     if(i != items.length-1){
-        //         output += items[i].textContent +"\r\n";
-        //     }else{
-        //         output += items[i].textContent;
-        //     }
-        // }
-        // ipcRenderer.send('item:save', output); // send to main.js
-        // });
-
-        // // load items from static file
-        // ipcRenderer.on('item:load', function(e, items){
-        //     ul.innerHTML = '';
-        //     ul.className = '';
-        //     ul.className = 'collection';
-        //     for(var i =0; i< items.length;i++){
-        //     var li = document.createElement('li');
-        //     li.className = 'collection-item';
-        //     var itemText = document.createTextNode(items[i]);
-        //     li.appendChild(itemText);
-        //     ul.appendChild(li);
-        //     }
-            
-        
-        // });
-
-        // // Remove item
-        // ul.addEventListener('dblclick', removeItem);
-
-        // function removeItem(e){
-        //     e.target.remove();
-        //     if(ul.children.length == 0){
-        //         ul.className = '';
-        //     }
-        // }
-    </script>
+    <div class="row">
+        <label for="name">Name:</label>
+            <input type ="text" id="name"/>
+    </div>
+            <div class="row">
+                <div class ="col s6">
+                        <label for="age">Age:</label>
+                        <input type ="text" id="age"/>
+                </div>
+                <div class ="col s6">
+            <label for="address">Address:</label>
+            <input type ="text" id="address"/>
+        </div>
+        </div>
+        <div class="row">
+                <div class ="col s6">
+            <label for="category">Category:</label>
+            <input type ="text" id="category"/>
+        </div>
+        <div class ="col s6">
+            <label for="charge">Charge:</label>
+            <input type ="text" id="charge"/>
+        </div>
+        <div class="row">
+                <div class ="col s12"></div>
+        </div>
+        <div class="row">
+                <div class ="col s1 offset-s4">
+            <Button class='btn wave-effect waves-light' type="button" id="back-button"><</Button>
+        </div>
+        <div class ="col s1 offset-s1">
+            <Button class='btn wave-effect waves-light' type="button" id="forward-button">></Button>
+        </div>
+        </div>
+        </div>
+    <script src="scripts/mainWindowScripts.js"></script>
 </body>
 </html>

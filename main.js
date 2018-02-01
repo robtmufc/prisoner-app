@@ -2,16 +2,17 @@ const electron = require('electron');
 const url = require('url');
 const path = require('path');
 const fs = require('fs');
+const Prisoner = require('./prisoner.js');
 
 const {app, BrowserWindow, Menu, ipcMain, dialog} = electron;
 
 // Set Environment
-process.env.NODE_ENV ='production';
+//process.env.NODE_ENV ='production';
 
 let mainWindow;
 let addWindow;
 
-let prisonerList;
+var prisonerList = [new Prisoner("Bill","28","Monsoon Lake","4","Robbery"),new Prisoner("Bob","28","Monsoon Lakes","4","Murder")];
 
 // Listen for app to be ready
 app.on('ready', function(){
@@ -32,14 +33,16 @@ app.on('ready', function(){
     const mainMenu = Menu.buildFromTemplate(mainMenuTemplate);
     // Insert Menu
     Menu.setApplicationMenu(mainMenu);
+    console.log(prisonerList);
+    console.log(prisonerList.length);
 });
 
 // Handle create add window
 function createAddPrisonerWindow(){
 // create new window
 addWindow = new BrowserWindow({
-    width: 300,
-    height: 200,
+    width: 1000,
+    height: 700,
     title: 'Add a new prisoner'
 });
 // load the html file into window
@@ -54,39 +57,32 @@ addWindow.loadURL(url.format({
     });
 }
 
-// // Catch item add
-// ipcMain.on('item:add', function(e, item){
-//     mainWindow.webContents.send('item:add', item); // send to mainWindow.html to deal with
-//     addWindow.close();
-// });
+ipcMain.on('main:load', function(e, i){
+    mainWindow.webContents.send('prisoner:load',prisonerList[0]);
+});
+ipcMain.on('prisoner:getCount', function(e, i){
+    console.log("In getCount: "+ i);
+    mainWindow.webContents.send('prisoner:count', prisonerList.length);
+});
+ipcMain.on('prisoner:next', function(e, i){
+    console.log("MainWindow: I is: "+ i);
+    console.log(prisonerList[i]);
+    mainWindow.webContents.send('item:next',prisonerList[i]);
+});
+ipcMain.on('prisoner:back', function(e, i){
+    console.log("MainWindow: I is: "+ i);
+    console.log(prisonerList[i]);
+    mainWindow.webContents.send('item:back',prisonerList[i]);
+});
+// Catch item add
+ipcMain.on('prisoner:add', function(e, item){
+    prisonerList.push(item);
+    console.log(prisonerList.length); // send to mainWindow.html to deal with
+    console.log(prisonerList);
+    addWindow.close();
+});
 
-// Save File
-// function saveToFile(){
-//     mainWindow.webContents.send('item:save');
 
-//     ipcMain.on('item:save', function(e, item){
-//         let lyrics = item;
-//         console.log(lyrics)
-// if(!fs.exists('saves')){
-//     fs.mkdir('saves',()=>{
-//         console.log("folder created successfully!")
-//     })
-// }
-// // write to a new file
-// fs.writeFile('saves/shopping_list.txt', lyrics,'UTF-8', (err) => {  
-//     // throws an error, you could also catch it here
-//     if (err) throw err;
-
-//     // success case, the file was saved
-//     console.log('Lyric saved!');
-//     dialog.showMessageBox({
-//         type: "info",
-//         title: "File Saved!",
-//         message: "Successfully saved to file!"
-//     });
-// });
-//     });
-// }
 // create menu template
 const mainMenuTemplate = [
     {
@@ -94,30 +90,10 @@ const mainMenuTemplate = [
         submenu:[
             {
                 label:'Add Prisoner',
-                accelerator: process.platform == 'darwin' ? 'Command+D':'Ctrl+D',
                 click(){
                     createAddPrisonerWindow();
                 }
             },
-            // {
-            //     label:'Clear Item',
-            //     click(){
-            //         mainWindow.webContents.send('item:clear');
-            //     }
-            // },
-            // {
-            //     label: 'Save File',
-            //     accelerator: process.platform == 'darwin' ? 'Command+S':'Ctrl+S',
-            //     click(){
-            //         saveToFile();
-            //     }
-            // },
-            // {
-            //     label: 'Load File',
-            //     click(){
-            //         loadFromFile();
-            //     }
-            // },
             {
                 label:'Quit',
                 accelerator: process.platform == 'darwin' ? 'Command+Q':'Ctrl+Q',
@@ -129,24 +105,10 @@ const mainMenuTemplate = [
     }
 ];
 
-// function loadFromFile(){
-// fs.readFile('saves/shopping_list.txt','utf-8', (err, data) =>{
-//     if(err) {
-//         console.log("An error occurred!"+err);
-//         return;
-//     }
-
-//     var sendData = data.split("\r\n");
-//     console.log(typeof sendData);
-//     console.log(sendData);
-//     mainWindow.webContents.send('item:load', sendData);
-// });
-// }
-
-// // If mac, add empty object to menu
-// if(process.platform == 'darwin'){
-//     mainMenuTemplate.unshift({});
-// }
+// If mac, add empty object to menu
+if(process.platform == 'darwin'){
+    mainMenuTemplate.unshift({});
+}
 
 // Add developer tools item if in dev
 if(process.env.NODE_ENV != 'production'){
